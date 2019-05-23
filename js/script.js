@@ -1,4 +1,4 @@
-fetch(`https://theblackwomanhistory.firebaseio.com/.json`)
+fetch(`http://localhost:5001/maravilhosas`)
 .then((response) =>{
     return response.json();
 })
@@ -27,6 +27,14 @@ fetch(`https://theblackwomanhistory.firebaseio.com/.json`)
             img.setAttribute('src', './img/img-mulher.png');
         }
 
+        // Segundo jeito do if:
+
+        // if (perfil.metadata && perfil.metadata.image){
+        //     img.setAttribute('src', perfil.metadata.image.url);
+        // } else{
+        //     img.setAttribute('src', './img/img-mulher.png');
+        // }
+
         const name = document.createElement('p');
         name.textContent = perfil.title;
 
@@ -39,3 +47,7 @@ fetch(`https://theblackwomanhistory.firebaseio.com/.json`)
 .catch(function(erro){
     console.log(erro);
 })
+
+
+fetch 
+// Criar novo fetch para fazer POST
