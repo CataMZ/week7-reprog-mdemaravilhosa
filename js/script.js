@@ -49,5 +49,33 @@ fetch(`http://localhost:5001/maravilhosas`)
 })
 
 
-fetch 
 // Criar novo fetch para fazer POST
+const button = document.getElementById("send_form");
+
+button.addEventListener("click", (evento) => {
+    evento.preventDefault();
+
+    const nome = document.getElementById("name").value;
+    const imagem = document.getElementById("image").value;
+
+    fetch('http://localhost:5001/maravilhosas', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'title': nome,
+            'metadata': {'image':{'url':imagem}},
+        })
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log("Sucesso!! :)");
+    })
+    .catch((erro) => {
+        console.log(erro)
+    })
+})
